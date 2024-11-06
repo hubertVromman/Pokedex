@@ -1,5 +1,23 @@
-<p>
-  {{ pokemonDetail?.name }}
-  {{ pokemonDetail?.height }}
-  {{ pokemonDetail?.weight }}
-</p>
+<p-card>
+  <div class="grid">
+    <div class="col-3">
+      <img src="{{this.pokemonDetail?.sprites?.front_default}}">
+    </div>
+    <div class="col-6">
+      <h2>
+        {{ pokemonDetail?.name }}
+      </h2>
+      <br>
+      Taille : {{ pokemonDetail?.height }}
+      <br>
+      Poids : {{ pokemonDetail?.weight }}
+    </div>
+    <div class="col-3">
+      <img src="{{this.pokemonDetail?.sprites?.back_default}}">
+    </div>
+  </div>
+  <fieldset class="col-12">
+    <img class="col-6" width="45%" src="{{this.pokemonDetail?.sprites?.other?.['official-artwork']?.front_default}}">
+    <img class="col-6" width="45%" src="{{this.pokemonDetail?.sprites?.other?.['official-artwork']?.front_shiny}}">
+  </fieldset>
+</p-card>

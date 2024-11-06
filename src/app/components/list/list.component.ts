@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
-import { PaginatorModule, PaginatorState } from 'primeng/paginator';
+import { Paginator, PaginatorModule, PaginatorState } from 'primeng/paginator';
 import { TableModule } from 'primeng/table';
 import { Pokemon } from '../../models/pokemon.model';
 import { PokemonService } from '../../services/pokemon.service';
@@ -22,6 +22,12 @@ export class ListComponent implements OnInit {
   pokemonDetailsURL: string | null = null;
   rows: number = 20;
   listLength: number = 1000;
+  
+  @ViewChild('paginator', { static: true }) paginator: Paginator | undefined
+
+  updateCurrentPage(): void {
+    setTimeout(() => this.paginator?.changePage(this.pageNumber - 1));
+  }
 
   constructor(private _pokemonService: PokemonService, private _ar : ActivatedRoute, private _router : Router) {
   }
@@ -31,6 +37,7 @@ export class ListComponent implements OnInit {
       params => {
         this.pageNumber = +params['id'];
         this.loadData();
+        this.updateCurrentPage();
       }
     );
   }

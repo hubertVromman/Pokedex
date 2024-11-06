@@ -1,11 +1,12 @@
 import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
 import { PokemonDetails } from '../../models/pokemonDetails.model';
 import { PokemonService } from '../../services/pokemon.service';
+import { CardModule } from 'primeng/card';
 
 @Component({
   selector: 'app-details',
   standalone: true,
-  imports: [],
+  imports: [CardModule],
   templateUrl: './details.component.html',
   styleUrl: './details.component.scss'
 })
